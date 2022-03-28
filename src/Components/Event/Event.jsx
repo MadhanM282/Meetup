@@ -1,6 +1,9 @@
 // This is an event details page which has its own route
 
+import { useParams } from "react-router-dom";
+
 export const Event = () => {
+  const {id} = useParams()
   return (
     <div className="eventContainer">
       {/* add your children here (divs)

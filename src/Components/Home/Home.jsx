@@ -1,30 +1,30 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Grid } from "../../style";
+import { Grid, Main } from "../../style";
 
 export const Home = () => {
-  const [list,SetList]=useState()
+  const [list,SetList]=useState([])
   useEffect(()=>{
     GetEvent()
   },[])
   const GetEvent = ()=>{
     axios.get("http://localhost:8080/meetups ").then(({data})=>{
-    console.log('data', data);
+    // console.log('data', data);
     SetList(data)
     }).catch((err)=>{console.log('error', err)})
   }
-  return (<div className="homeContainer">
+  return (<Main className="homeContainer">
       {/* // Filter on the basis of Users interests and location (both true)  .filter((el) => { })*/ }
-      {[].map((el) => {
-          console.log('el', el);
+      {list.map((el) => {
+          // console.log('el', el);
           return (
-            <Link to={`add route here`} className="events">
-              <div>
-                
-                {/* <h1>{el.title}</h1>
-                <h2>{el.location}</h2> */}
-              </div>
+            <Link to={`/meetup/${el.id}`} key = {el.id} className="events">
+              <Grid>
+                <img src={el.image} alt="" />
+                <h1>{el.title}</h1>
+                <h2>{el.location}</h2>
+              </Grid>
               {/* add your children here (divs)
               ex : title, theme, description, date, time, location, image(optional)
               the classNames should be also : title, theme, description, date, time, location, image(optional)
@@ -78,6 +78,6 @@ export const Home = () => {
 
         </div>
       </div>
-    </div>
+    </Main>
   );
 };
