@@ -1,22 +1,32 @@
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "../../Redux/Login/action";
 
 export const LoginSignUp = () => {
   const [int,Setint] = useState([])
   const [info,SetInfo] = useState({
     name:"",
     location:"",
-    interests:[],
-    image:"",
-    subscribed:[]
+    interests:"",
   })
-
+  const {user} = useSelector((store)=>store.user)
+  const dispatch = useDispatch()
   const post = ()=>{
     axios.post("http://localhost:8080/users",info)
   }
+  const submit = (e)=>{
+    const {className,value} = e.target
+    SetInfo({[className]:value})
+    post()
+  }
+  const Login = ()=>{
+    localStorage.setItem("user",true);
+    dispatch(userLogin())
+  }
   return (
     <div className="loginSignUp">
-      <form className="signUp" onSubmit={(e) => { }}>
+      <form className="signUp" onSubmit={(e) => {e.preventDefault(), submit() }}>
         <h1>SignUp</h1>
         <label>name</label>
         <input
@@ -47,23 +57,23 @@ export const LoginSignUp = () => {
         <input
           type="checkbox"
           className="technology"
-          onChange={(event) => { }}
+          onChange={(event) => { event.target.value }}
         />
         <br />
         <label>food</label>
-        <input type="checkbox" className="food" onChange={(event) => {console.log(event.target.className) }} />
+        <input type="checkbox" value="food" className="food" onChange={submit} />
         <br />
         <label>movies</label>
-        <input type="checkbox" className="movies" onChange={(event) => {console.log(event.target.className) }} />
+        <input type="checkbox" value="movies" className="movies" onChange={(event) => {console.log(event.target.className) }} />
         <br />
         <label>culture</label>
-        <input type="checkbox" className="culture" onChange={(event) => {console.log(event.target.className) }} />
+        <input type="checkbox" value="culture" className="culture" onChange={(event) => {console.log(event.target.className) }} />
         <br />
         <label>art</label>
-        <input type="checkbox" className="art" onChange={(event) => {console.log(event.target.className) }} />
+        <input type="checkbox" value className="art" onChange={(event) => {console.log(event.target.className) }} />
         <br />
         <label>drama</label>
-        <input type="checkbox" className="drama" onChange={(event) => {console.log(event.target.className) }} />
+        <input type="checkbox" value="drama" className="drama" onChange={(event) => {console.log(event.target.className) }} />
         <br />
         <label>image</label>
         <input
@@ -77,7 +87,7 @@ export const LoginSignUp = () => {
       </form>
 
       {/* Login */}
-      <form className="login" onSubmit={(e) => { console.log(event.target.className)}}>
+      <form className="login" onSubmit={Login}>
         <h1>Login</h1>
         <label>name</label>
         <input

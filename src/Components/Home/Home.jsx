@@ -1,6 +1,18 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Home = () => {
+  const [list,SetList]=useState()
+  useEffect(()=>{
+    GetEvent()
+  },[])
+  const GetEvent = ()=>{
+    axios.get("http://localhost:8080/meetups ").then(({data})=>{
+    console.log('data', data);
+    SetList(data)
+    })
+  }
   return (
     <div className="homeContainer">
       {[]

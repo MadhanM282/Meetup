@@ -2,4 +2,4 @@
 export const LOGIN = "LOGIN";
 
 //Action Creators:
-export const userLogin = (payload) => ({ type: LOGIN, payload });
+export const userLogin = () => ({ type: LOGIN, payload });
