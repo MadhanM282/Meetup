@@ -210,6 +210,22 @@
         "movies"
       ],
       "id": 1
+    },
+    {
+      "name": "mohan",
+      "location": "bangalore",
+      "interest": [
+        "food"
+      ],
+      "id": 2
+    },
+    {
+      "name": "mohan",
+      "location": "bangalore",
+      "interest": [
+        "food"
+      ],
+      "id": 3
     }
   ]
 }

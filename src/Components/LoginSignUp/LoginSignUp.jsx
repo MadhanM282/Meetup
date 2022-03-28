@@ -19,7 +19,7 @@ export const LoginSignUp = () => {
       location:location,
       interest:interest
     })
-    localStorage.setItem("userLoginDetails",JSON.stringify(name,location,interest))
+    localStorage.setItem("userLoginDetails",JSON.stringify({name,location,interest}))
   }
   const submit = (e)=>{
     
@@ -29,9 +29,11 @@ export const LoginSignUp = () => {
     const {value} = e.target
     setInterest([...interest,value])
   }
+  // const navigate = useNavigat
   const Login = ()=>{
-    localStorage.setItem("user",true);
     dispatch(userLogin())
+    localStorage.setItem("user",true);
+
   }
   return (
     <div className="loginSignUp">
