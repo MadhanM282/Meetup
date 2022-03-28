@@ -7,6 +7,7 @@ import { Navbar } from "../Navbar/Navbar";
 import { NotFound } from "../NotFound/NotFound";
 
 export const Routers = () => {
+    
     return (<>
         <Navbar />
         <Routes>

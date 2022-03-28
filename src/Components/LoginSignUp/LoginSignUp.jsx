@@ -4,21 +4,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../Redux/Login/action";
 
 export const LoginSignUp = () => {
-  const [int,Setint] = useState([])
-  const [info,SetInfo] = useState({
-    name:"",
-    location:"",
-    interests:"",
-  })
+  // const [name,Setint] = useState("")
+  
+  const [name,setName] = useState("")
+  const [location,setLocation] =useState("");
+  const [interest,setInterest] = useState([])
+  // console.log('interest', interest);
   const {user} = useSelector((store)=>store.user)
+  console.log('user', user);
   const dispatch = useDispatch()
   const post = ()=>{
-    axios.post("http://localhost:8080/users",info)
+    axios.post("http://localhost:8080/users",{
+      name:name,
+      location:location,
+      interest:interest
+    })
+    localStorage.setItem("userLoginDetails",JSON.stringify(name,location,interest))
   }
   const submit = (e)=>{
-    const {className,value} = e.target
-    SetInfo({[className]:value})
+    
     post()
+  }
+  const interesthandel = (e)=>{
+    const {value} = e.target
+    setInterest([...interest,value])
   }
   const Login = ()=>{
     localStorage.setItem("user",true);
@@ -32,7 +41,7 @@ export const LoginSignUp = () => {
         <input
           type="text"
           className="name"
-          onChange={(event) => { }}
+          onChange={(e)=>setName(e.target.value)}
           required
         />
         <br />
@@ -44,7 +53,7 @@ export const LoginSignUp = () => {
           required
         />
         <br />
-        <select value={""} className="location" onChange={(event) => { console.log(event.target.value)}}>
+        <select value={""} className="location" onChange={(event) => { setLocation(event.target.value)}}>
           <option value=""></option>
           <option value="bangalore">Bangalore</option>
           <option value="kolkata">Kolkata</option>
@@ -57,23 +66,23 @@ export const LoginSignUp = () => {
         <input
           type="checkbox"
           className="technology"
-          onChange={(event) => { event.target.value }}
+          onChange={(event) => { interesthandel }}
         />
         <br />
         <label>food</label>
-        <input type="checkbox" value="food" className="food" onChange={submit} />
+        <input type="checkbox" value="food" className="food" onChange={interesthandel} />
         <br />
         <label>movies</label>
-        <input type="checkbox" value="movies" className="movies" onChange={(event) => {console.log(event.target.className) }} />
+        <input type="checkbox" value="movies" className="movies" onChange={interesthandel} />
         <br />
         <label>culture</label>
-        <input type="checkbox" value="culture" className="culture" onChange={(event) => {console.log(event.target.className) }} />
+        <input type="checkbox" value="culture" className="culture" onChange={interesthandel} />
         <br />
         <label>art</label>
-        <input type="checkbox" value className="art" onChange={(event) => {console.log(event.target.className) }} />
+        <input type="checkbox" value className="art" onChange={interesthandel} />
         <br />
         <label>drama</label>
-        <input type="checkbox" value="drama" className="drama" onChange={(event) => {console.log(event.target.className) }} />
+        <input type="checkbox" value="drama" className="drama" onChange={interesthandel} />
         <br />
         <label>image</label>
         <input
@@ -105,7 +114,7 @@ export const LoginSignUp = () => {
           required
         />
         <br />
-        <input type="submit" className="submitLoginForm" />
+        <input type="submit" className="submitLoginForm" onClick={(e)=>e.preventDefault()} />
       </form>
     </div>
   );
