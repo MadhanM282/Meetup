@@ -15,3 +15,12 @@ export const Main = styled.div`
         /* justify-content:space-between */
     }
 `
+export const Info = styled.div`
+margin: auto;
+/* border: 1px solid; */
+width: fit-content;
+    display:flex;
+`
+export const InfoDiv = styled.div`
+    text-align:center;
+`
