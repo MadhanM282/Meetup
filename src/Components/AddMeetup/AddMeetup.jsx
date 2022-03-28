@@ -35,7 +35,7 @@ export const AddMeetup = () => {
         />
         <br />
         <label>Theme</label>
-        <select value={""} className="theme" onChange={(event) => { }}>
+        <select value={""} className="theme" onChange={(event) => { console.log(event.target.value)}}>
           <option value="">-----------</option>
           <option value="technology">Technology</option>
           <option value="food">Food</option>

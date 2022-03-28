@@ -1,5 +1,6 @@
 import { loginReducer } from "./Login/loginReducer";
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import thunk from "redux-thunk";
 
-export const store = createStore(); // add your reducers here
+export const store = createStore(loginReducer,applyMiddleware(thunk)); // add your reducers here
 

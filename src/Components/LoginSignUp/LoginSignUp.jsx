@@ -36,37 +36,37 @@ export const LoginSignUp = () => {
         />
         <br />
         <label>food</label>
-        <input type="checkbox" className="food" onChange={(event) => { }} />
+        <input type="checkbox" className="food" onChange={(event) => {console.log(event.target.className) }} />
         <br />
         <label>movies</label>
-        <input type="checkbox" className="movies" onChange={(event) => { }} />
+        <input type="checkbox" className="movies" onChange={(event) => {console.log(event.target.className) }} />
         <br />
         <label>culture</label>
-        <input type="checkbox" className="culture" onChange={(event) => { }} />
+        <input type="checkbox" className="culture" onChange={(event) => {console.log(event.target.className) }} />
         <br />
         <label>art</label>
-        <input type="checkbox" className="art" onChange={(event) => { }} />
+        <input type="checkbox" className="art" onChange={(event) => {console.log(event.target.className) }} />
         <br />
         <label>drama</label>
-        <input type="checkbox" className="drama" onChange={(event) => { }} />
+        <input type="checkbox" className="drama" onChange={(event) => {console.log(event.target.className) }} />
         <br />
         <label>image</label>
         <input
           type="text"
           className="image"
-          onChange={(event) => { }}
+          onChange={(event) => {console.log(event.target.className) }}
           required
         />
         <br />
         <input type="submit" className="submitSignUpForm" />
       </form>
-      <form className="login" onSubmit={(e) => { }}>
+      <form className="login" onSubmit={(e) => { console.log(event.target.className)}}>
         <h1>Login</h1>
         <label>name</label>
         <input
           type="text"
           className="name"
-          onChange={(event) => { }}
+          onChange={(event) => {console.log(event.target.className) }}
           required
         />
         <br />
@@ -74,7 +74,7 @@ export const LoginSignUp = () => {
         <input
           type="text"
           className="password"
-          onChange={(event) => { }}
+          onChange={(event) => { console.log(event.target.className) }}
           required
         />
         <br />
