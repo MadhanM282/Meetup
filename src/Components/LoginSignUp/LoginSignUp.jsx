@@ -1,4 +1,19 @@
+import axios from "axios";
+import { useState } from "react";
+
 export const LoginSignUp = () => {
+  const [int,Setint] = useState([])
+  const [info,SetInfo] = useState({
+    name:"",
+    location:"",
+    interests:[],
+    image:"",
+    subscribed:[]
+  })
+
+  const post = ()=>{
+    axios.post("http://localhost:8080/users",info)
+  }
   return (
     <div className="loginSignUp">
       <form className="signUp" onSubmit={(e) => { }}>
@@ -19,7 +34,7 @@ export const LoginSignUp = () => {
           required
         />
         <br />
-        <select value={""} className="location" onChange={(event) => { }}>
+        <select value={""} className="location" onChange={(event) => { console.log(event.target.value)}}>
           <option value=""></option>
           <option value="bangalore">Bangalore</option>
           <option value="kolkata">Kolkata</option>
@@ -60,6 +75,8 @@ export const LoginSignUp = () => {
         <br />
         <input type="submit" className="submitSignUpForm" />
       </form>
+
+      {/* Login */}
       <form className="login" onSubmit={(e) => { console.log(event.target.className)}}>
         <h1>Login</h1>
         <label>name</label>
