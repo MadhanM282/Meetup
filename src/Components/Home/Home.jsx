@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Grid, Info, Info1, Main } from "../../style";
+import { Grid, Grid1, Info, Info1, Main } from "../../style";
 
 export const Home = () => {
 
@@ -26,13 +26,11 @@ export const Home = () => {
       console.log('data', data);
     }).catch((err) => { console.log('error', err) })
   }
-  return (<Main className="homeContainer">
+  return (<div className="homeContainer">
+    <Main>
+
     {/* // Filter on the basis of Users interests and location (both true)  .filter((el) => { })*/}
-    {list.filter((el) => {
-      if (el.location === loc[0]) {
-        console.log(el)
-      }
-    })}
+    
     {list.map((el) => {
       // console.log('el', el);
       return (
@@ -73,8 +71,9 @@ export const Home = () => {
         </Link>
       );
     })}
+    </Main>
 
-    <div align="center" className="subscribedData">
+    <siv align="center" className="subscribedData">
       <div>
         <select
           value={"add your value here"}  // add value here
@@ -89,7 +88,7 @@ export const Home = () => {
       </div>
       <Link to={"/addmeetup"}> Add Meetup</Link>
       <h1>Subscribed Events</h1>
-      <div className="subscribedEvents">
+      <Grid1 className="subscribedEvents">
         {/* All user subcribed events should be displayed here in an ascending order of date */}
 
         {meets.map((el) => {
@@ -116,8 +115,8 @@ export const Home = () => {
           );
         })}
 
-      </div>
-    </div>
-  </Main>
+      </Grid1>
+    </siv>
+  </div>
   );
 };

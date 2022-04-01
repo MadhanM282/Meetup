@@ -30,3 +30,10 @@ align-items: center;
 justify-content: space-evenly;
     display:flex;
 `
+export const Grid1 = styled.div`
+    display: grid;
+    border:1px solid red;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+    
+    `
