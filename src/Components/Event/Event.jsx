@@ -2,12 +2,16 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { Meets } from "../../Redux/Login/action";
 import { Info, InfoDiv } from "../../style";
 
 export const Event = () => {
   const [list,SetList]=useState([])
+  const [butt,SetButt] = useState(false)
   const {id} = useParams()
+  const dispatch = useDispatch()
   useEffect(()=>{
     GetEvent()
   },[])
@@ -37,8 +41,12 @@ export const Event = () => {
 
       {/* only one of the buttons should be visible depending on the status of subcription
       Hint : use conditional rendering */}
-      <button className="unsubscribe">Unsubscribe</button>
-      <button className="subscribe" onClick={() => { }}>Subscribe</button>
+      {butt?<button className="unsubscribe" onClick={() =>SetButt(false)}>Unsubscribe</button>:<button className="subscribe" onClick={() => {
+        SetButt(true)
+        dispatch(Meets(list))
+      }}>Subscribe</button>}
+      
+      
     </InfoDiv>
   );
 };

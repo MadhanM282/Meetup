@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../Redux/Login/action";
 
 export const LoginSignUp = () => {
@@ -11,6 +12,7 @@ export const LoginSignUp = () => {
   const [interest,setInterest] = useState([])
   // console.log('interest', interest);
   const {user} = useSelector((store)=>store.user)
+  const navigate = useNavigate()
   console.log('user', user);
   const dispatch = useDispatch()
   const post = ()=>{
@@ -20,9 +22,10 @@ export const LoginSignUp = () => {
       interest:interest
     })
     localStorage.setItem("userLoginDetails",JSON.stringify({name,location,interest}))
+    localStorage.setItem("Auth",true)
+    localStorage.setItem("loc",location)
   }
   const submit = (e)=>{
-    
     post()
   }
   const interesthandel = (e)=>{
@@ -35,6 +38,8 @@ export const LoginSignUp = () => {
     localStorage.setItem("user",true);
 
   }
+
+  const [auth,setAuth] = useState(false)
   return (
     <div className="loginSignUp">
       <form className="signUp" onSubmit={(e) => {e.preventDefault(), submit() }}>
@@ -104,7 +109,7 @@ export const LoginSignUp = () => {
         <input
           type="text"
           className="name"
-          onChange={(event) => {console.log(event.target.className) }}
+          onChange={(event) => {setAuth(true) }}
           required
         />
         <br />
@@ -116,7 +121,14 @@ export const LoginSignUp = () => {
           required
         />
         <br />
-        <input type="submit" className="submitLoginForm" onClick={(e)=>e.preventDefault()} />
+        <input type="submit" className="submitLoginForm" onClick={
+          (e)=>{
+          e.preventDefault();
+          if(auth===true){
+            return navigate("/")
+          }
+        }
+      } />
       </form>
     </div>
   );

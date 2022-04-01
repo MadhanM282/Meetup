@@ -226,6 +226,32 @@
         "food"
       ],
       "id": 3
+    },
+    {
+      "name": "madhan",
+      "location": "kolkata",
+      "interest": [
+        "movies",
+        "drama"
+      ],
+      "id": 4
+    },
+    {
+      "name": "madhansas",
+      "location": "kolkata",
+      "interest": [
+        "movies",
+        "drama"
+      ],
+      "id": 5
+    },
+    {
+      "name": "ssd",
+      "location": "bangalore",
+      "interest": [
+        "food"
+      ],
+      "id": 6
     }
   ]
 }

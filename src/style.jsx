@@ -24,3 +24,9 @@ width: fit-content;
 export const InfoDiv = styled.div`
     text-align:center;
 `
+export const Info1 = styled.div`
+margin: auto;
+align-items: center;
+justify-content: space-evenly;
+    display:flex;
+`
