@@ -14,6 +14,7 @@ export const AddMeetup = () => {
     description: "",
     image: ""
   })
+  
 
   const handleChange = (e) => {
     let { className, value } = e.target
@@ -27,6 +28,7 @@ export const AddMeetup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post('http://localhost:8080/meetups', formData)
+
   }
   const { title,
     location,

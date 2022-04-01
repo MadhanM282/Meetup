@@ -29,7 +29,7 @@ export const Home = () => {
   return (<Main className="homeContainer">
     {/* // Filter on the basis of Users interests and location (both true)  .filter((el) => { })*/}
     {list.filter((el) => {
-      if (el.location === loc) {
+      if (el.location === loc[0]) {
         console.log(el)
       }
     })}
@@ -38,7 +38,7 @@ export const Home = () => {
       return (
         <Link to={`/meetup/${el.id}`} key={el.id} className="events">
           <Grid>
-            <img src={el.image} alt="" />
+            <img className="image" src={el.image} alt="" />
             <h1 className="title">{el.title}</h1>
             <Info1>
               <h2 className="location" >{el.location}</h2>
@@ -96,7 +96,7 @@ export const Home = () => {
           return (
             <Link to={`/meetup/${el.id}`} key={el.id} className="events">
               <Grid>
-                <img src={el.image} alt="" />
+                <img className="image" src={el.image} alt="" />
                 <h1 className="title">{el.title}</h1>
                 <Info1>
                   <h2 className="location" >{el.location}</h2>
